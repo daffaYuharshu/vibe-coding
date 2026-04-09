@@ -8,6 +8,13 @@
       "when": 1775641505592,
       "tag": "0000_bouncy_george_stacy",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1775707244964,
+      "tag": "0001_wise_paibok",
+      "breakpoints": true
     }
   ]
 }
