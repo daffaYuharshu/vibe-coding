@@ -15,6 +15,20 @@
       "when": 1775707244964,
       "tag": "0001_wise_paibok",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1775717372157,
+      "tag": "0002_jittery_network",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1775717395052,
+      "tag": "0003_fat_dust",
+      "breakpoints": true
     }
   ]
 }
