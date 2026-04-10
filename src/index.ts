@@ -3,7 +3,7 @@ import { db } from './db';
 import { users } from './db/schema/users';
 import { usersRoute } from './routes/users-route';
 
-const app = new Elysia()
+export const app = new Elysia()
   .get('/', () => 'Hello Elysia')
   .get('/users', async () => {
     return await db.select().from(users);
