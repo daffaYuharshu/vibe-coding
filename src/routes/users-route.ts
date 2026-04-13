@@ -19,7 +19,11 @@ export const usersRoute = new Elysia()
       name: t.String({ maxLength: 255, error: "Nama maksimal 255 karakter" }),
       email: t.String({ format: "email", maxLength: 255, error: "Email maksimal 255 karakter" }),
       password: t.String({ maxLength: 255, error: "Password maksimal 255 karakter" }),
-    })
+    }),
+    detail: {
+      summary: "Mendaftarkan User Baru",
+      tags: ["Authentication"]
+    }
   })
   .post("/api/login", async ({ body, set }) => {
     try {
@@ -37,7 +41,12 @@ export const usersRoute = new Elysia()
     body: t.Object({
       email: t.String({ format: "email", maxLength: 255, error: "Email maksimal 255 karakter" }),
       password: t.String({ maxLength: 255, error: "Password maksimal 255 karakter" }),
-    })
+    }),
+    detail: {
+      summary: "Otentikasi / Login Pengguna",
+      tags: ["Authentication"],
+      description: "Akan mengembalikan token sesi."
+    }
   })
   .group("/api/users", (app) =>
     app
@@ -64,6 +73,12 @@ export const usersRoute = new Elysia()
           set.status = 500;
           return { error: "Terjadi kesalahan pada server" };
         }
+      }, {
+        detail: {
+          summary: "Melihat Profil Current User",
+          tags: ["User Operations"],
+          security: [{ bearerAuth: [] }]
+        }
       })
       .delete("/logout", async ({ token, set }) => {
         if (!token) {
@@ -81,6 +96,12 @@ export const usersRoute = new Elysia()
           }
           set.status = 500;
           return { error: "Terjadi kesalahan pada server" };
+        }
+      }, {
+        detail: {
+          summary: "Logout Sesi Pengguna",
+          tags: ["User Operations"],
+          security: [{ bearerAuth: [] }]
         }
       })
   );
