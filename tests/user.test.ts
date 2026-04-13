@@ -32,7 +32,7 @@ describe("User API (Protected)", () => {
         }),
       })
     );
-    const loginData = await loginRes.json();
+    const loginData = (await loginRes.json()) as any;
     authToken = loginData.data;
   });
 
@@ -46,7 +46,7 @@ describe("User API (Protected)", () => {
       );
 
       expect(response.status).toBe(200);
-      const body = await response.json();
+      const body = (await response.json()) as any;
       expect(body.data.email).toBe("auth@example.com");
       expect(body.data.name).toBe("Auth User");
       expect(body.data.password).toBeUndefined(); // Should not return password
@@ -60,7 +60,7 @@ describe("User API (Protected)", () => {
       );
 
       expect(response.status).toBe(401);
-      const body = await response.json();
+      const body = (await response.json()) as any;
       expect(body.error).toBe("Unauthorized");
     });
 
@@ -73,7 +73,7 @@ describe("User API (Protected)", () => {
       );
 
       expect(response.status).toBe(401);
-      const body = await response.json();
+      const body = (await response.json()) as any;
       expect(body.error).toBe("Unauthorized");
     });
   });
@@ -88,7 +88,7 @@ describe("User API (Protected)", () => {
         })
       );
       expect(logoutRes.status).toBe(200);
-      const logoutBody = await logoutRes.json();
+      const logoutBody = (await logoutRes.json()) as any;
       expect(logoutBody.data).toBe("OK");
 
       // 2. Try accessing protected route again
