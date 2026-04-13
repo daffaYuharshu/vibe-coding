@@ -22,7 +22,7 @@ describe("Authentication API", () => {
       );
 
       expect(response.status).toBe(200);
-      const body = await response.json();
+      const body = (await response.json()) as any;
       expect(body.data).toBe("OK");
     });
 
@@ -54,7 +54,7 @@ describe("Authentication API", () => {
       );
 
       expect(response.status).toBe(400);
-      const body = await response.json();
+      const body = (await response.json()) as any;
       expect(body.error).toBe("Email sudah terdaftar");
     });
 
@@ -106,7 +106,7 @@ describe("Authentication API", () => {
       );
 
       expect(response.status).toBe(200);
-      const body = await response.json();
+      const body = (await response.json()) as any;
       expect(body.data).toBeDefined();
       expect(typeof body.data).toBe("string"); // Token
     });
@@ -124,7 +124,7 @@ describe("Authentication API", () => {
       );
 
       expect(response.status).toBe(401);
-      const body = await response.json();
+      const body = (await response.json()) as any;
       expect(body.error).toBe("Email atau password salah");
     });
   });

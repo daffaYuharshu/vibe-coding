@@ -96,7 +96,7 @@ export const getCurrentUser = async (token: string) => {
     throw new Error("Unauthorized");
   }
 
-  return { data: result[0] };
+  return { data: result[0]! };
 };
 
 /**

@@ -20,6 +20,12 @@ export const usersRoute = new Elysia()
       email: t.String({ format: "email", maxLength: 255, error: "Email maksimal 255 karakter" }),
       password: t.String({ maxLength: 255, error: "Password maksimal 255 karakter" }),
     }),
+    response: {
+      200: t.Object({ data: t.String() }),
+      400: t.Object({ error: t.String() }),
+      422: t.String(),
+      500: t.Object({ error: t.String() }),
+    },
     detail: {
       summary: "Mendaftarkan User Baru",
       tags: ["Authentication"]
@@ -42,6 +48,11 @@ export const usersRoute = new Elysia()
       email: t.String({ format: "email", maxLength: 255, error: "Email maksimal 255 karakter" }),
       password: t.String({ maxLength: 255, error: "Password maksimal 255 karakter" }),
     }),
+    response: {
+      200: t.Object({ data: t.String() }),
+      401: t.Object({ error: t.String() }),
+      500: t.Object({ error: t.String() }),
+    },
     detail: {
       summary: "Otentikasi / Login Pengguna",
       tags: ["Authentication"],
@@ -74,6 +85,18 @@ export const usersRoute = new Elysia()
           return { error: "Terjadi kesalahan pada server" };
         }
       }, {
+        response: {
+          200: t.Object({
+            data: t.Object({
+              id: t.Number(),
+              name: t.String(),
+              email: t.String(),
+              createdAt: t.Date(),
+            })
+          }),
+          401: t.Object({ error: t.String() }),
+          500: t.Object({ error: t.String() }),
+        },
         detail: {
           summary: "Melihat Profil Current User",
           tags: ["User Operations"],
@@ -98,6 +121,11 @@ export const usersRoute = new Elysia()
           return { error: "Terjadi kesalahan pada server" };
         }
       }, {
+        response: {
+          200: t.Object({ data: t.String() }),
+          401: t.Object({ error: t.String() }),
+          500: t.Object({ error: t.String() }),
+        },
         detail: {
           summary: "Logout Sesi Pengguna",
           tags: ["User Operations"],
